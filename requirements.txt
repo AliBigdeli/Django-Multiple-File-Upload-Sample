@@ -25,10 +25,6 @@ pytest
 pytest-django
 Faker
 
-# background proccess and cache
-celery
-django-redis
-
 # database client
 psycopg2-binary
 
