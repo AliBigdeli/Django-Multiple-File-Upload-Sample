@@ -45,7 +45,7 @@ these commands for PowerShell if you want.
 ## Clone the repo
 Clone this repo anywhere you want and move into the directory:
 ```bash
-git clone https://github.com/AliBigdeli/Django-Hamravesh-Docker-Minio-Template.git
+git clone https://github.com/AliBigdeli/Django-Multiple-File-Upload-Sample.git
 ```
 
 ## Enviroment Varibales
