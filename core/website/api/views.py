@@ -10,9 +10,7 @@ from ..models import *
 
 
 class PhotoModelViewSet(viewsets.ModelViewSet):
-    """
-    CRUD Functionality plus (access,recycle)
-    """
+    
     serializer_class = PhotoSerializer
     parser_classes = [MultiPartParser]
 

@@ -119,6 +119,7 @@ class PhotoForm(forms.ModelForm):
 ```views.py```
 ```python
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from django.views.generic import ListView,FormView,CreateView
 from .forms import PhotoForm
 from .models import Photo
@@ -140,12 +141,18 @@ class UploadView(CreateView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         files = request.FILES.getlist('file')
+        
+        if 'file' not in request.FILES or not form.is_valid():
+            return HttpResponseRedirect(reverse_lazy("website:index"))
+        
         if form.is_valid():
             for file in files:
                 Photo.objects.create(file=file)
             return HttpResponseRedirect(self.request.path_info)
         else:
             return self.form_invalid(form)
+    
+    
 ```
 
 # API Base
@@ -178,9 +185,7 @@ from ..models import *
 
 
 class PhotoModelViewSet(viewsets.ModelViewSet):
-    """
-    CRUD Functionality plus (access,recycle)
-    """
+
     serializer_class = PhotoSerializer
     parser_classes = [MultiPartParser]
 
